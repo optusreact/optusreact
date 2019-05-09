@@ -9,7 +9,7 @@ class Login extends Component {
 	submit = (data) => {
 		
 		console.log('on Submit called parent', JSON.stringify(data));
-		this.props.actions.login(data).then(() => this.props.history.push("/search"));
+		this.props.actions.login(data).then(() => this.props.history.push("/dashboard"));
 		
 	};
 
