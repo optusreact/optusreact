@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Paper from "@material-ui/core/Paper";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import Grid from '@material-ui/core/Grid';
 import _ from "lodash";
 import  "./login-form.scss";
 import { func, string, number } from "prop-types";
@@ -47,48 +48,48 @@ class LoginForm extends Component {
 		return error;
 	};
 
+	componentDidMount() {
+	}
+
 	render() {
 		const { email, password } = this.state.data;
 		const { error } = this.state;
 		return (
-			<div className="row col-full-height center-xs middle-xs">
-				<div className="col-xs-12 col-sm-8 col-md-6 col-lg-4">
-					<Paper className="login" elevation={1}>
-						<form onSubmit={this.onSubmit}>
-							<TextField
-								error={error.email ? true : false}
-								id="email"
-								label="Email"
-								fullWidth={true}
-								margin="normal"
-								value={email}
-								onChange={this.handleChange}
-								helperText={error.email}
-							/>
-							<TextField
-								error={error.password ? true : false}
-								id="password"
-								label="password"
-								fullWidth={true}
-								margin="normal"
-								value={password}
-								onChange={this.handleChange}
-								helperText={error.password}
-							/>
-							<Button
-								variant="outlined"
-								color="primary"
-								type="submit"
-							>
-								Login
-							</Button>
-							<div>
-								{email}:{password}
-							</div>
-						</form>
-					</Paper>
-				</div>
-			</div>
+			<Grid className="login-form" container spacing={16}>
+				<Grid item xs={7}>
+					<form onSubmit={this.onSubmit}>
+						<h1>Login to your account</h1>
+						<p>Please log in using the email address you provided when you signed up.</p>
+						<TextField
+							error={error.email ? true : false}
+							id="email"
+							label="Email"
+							fullWidth={true}
+							value={email}
+							onChange={this.handleChange}
+							helperText={error.email}
+							className="login-top"
+						/>
+						<TextField
+							error={error.password ? true : false}
+							id="password"
+							label="Password"
+							fullWidth={true}
+							value={password}
+							onChange={this.handleChange}
+							helperText={error.password}
+						/>
+						<button
+							className="btn btn-optus btn-login"
+							color="primary"
+							type="submit"
+						>
+							Login
+						</button>
+						<p><a href="#">Forgotten your username or password?</a></p>
+					</form>
+				</Grid>
+			</Grid>
 		);
 	}
 }

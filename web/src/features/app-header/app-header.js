@@ -7,29 +7,20 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Grid from '@material-ui/core/Grid';
 
 
 import './app-header.scss';
 
 export default function HeaderApp() {
 	return ( 
-		<div>
-		<AppBar position="static">
-            <Toolbar>
-                <Typography variant="title" color="inherit">
-                OPTUS - React & React-Native
-               
-
-                </Typography>
-                 <Tabs value="tet" >
-                 <Tab value="login" label="login"  to='/' component={Link}  />
-            <Tab value="dashboard" label="dashboard"  to='/dashboard' component={Link}  />
-            
-       
-          </Tabs>
-            </Toolbar>
-        </AppBar>
-</div>
+      <Grid item xs={12}>
+          <div className="optus-nav">
+            <div className="">
+              <img src="https://www.comparetv.com.au/wp-content/uploads/2018/11/provider-optus-logo-big.png"></img>
+            </div>
+          </div>
+      </Grid>
     )
 
 }

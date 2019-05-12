@@ -4,6 +4,25 @@
   padding: 60px 30px;
   text-align: center;
 }
+.login-form {
+  padding: 60px 0;
+
+  label {
+    margin: 0;
+  }
+
+  .MuiFormControl-fullWidth-101 {
+    margin-bottom: 40px;
+
+    &.login-top {
+      margin-bottom: 10px;
+    }
+
+    &:first-child {
+      margin-bottom: 0;
+    }
+  }
+}
 .donutchart-track{
   fill: transparent;
   stroke: #DAE2E5;

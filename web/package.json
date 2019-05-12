@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preinstall": "npm install ../common/",
-    "build": "SET NODE_ENV=production && webpack --config webpack/prod.config.js",
-    "start": "SET NODE_ENV=development && webpack-dev-server --config webpack/dev.config.js"
+    "preinstall": "npm install ../optus-core/",
+    "build": "NODE_ENV=production && webpack --config webpack/prod.config.js",
+    "start": "NODE_ENV=development && webpack-dev-server --config webpack/dev.config.js"
   },
   "author": "Amit",
   "license": "ISC",
@@ -40,6 +40,7 @@
     "lodash": "^4.17.5",
     "node-sass": "^4.9.3",
     "normalizr": "^3.2.4",
+    "optus-core": "file:../optus-core",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

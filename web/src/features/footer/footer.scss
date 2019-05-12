@@ -1,0 +1,271 @@
+@mixin rem-calc($size) {
+    $remSize: $size / 16;
+}
+.ux-footer {
+	&#global_footer {
+		background-color: #000;
+    }
+    margin-top: 120px;
+	background-color: #000;
+	padding-top: 40px;
+	.top-bar {
+		background: transparent;
+		height: inherit;
+	}
+	.footer-container {
+		.container {
+			.row {
+				padding-bottom: rem-calc(48px);
+			}
+		}
+	}
+	.social H5 {
+		margin-bottom: rem-calc(12px);
+	}
+	H5 {
+		color: #333;
+		line-height: 1;
+		font-size: rem-calc(16px);
+		text-transform: uppercase;
+	}
+	.social {
+		UL {
+			display: inline-flex;
+			flex-flow: row wrap;
+			LI {
+				padding-right: rem-calc(12px);
+				&:last-child {
+					padding-right: 0;
+				}
+			}
+		}
+		.ico {
+			color: #888;
+			font-size: rem-calc(25px);
+			&:hover {
+				color: #fff;
+			}
+		}
+	}
+	UL {
+        margin: 0;
+        padding: 0;
+
+        &.inline-list {
+            LI {
+                display: inline-block;
+                margin-right: 30px;
+                margin-top: 40px;
+                margin-bottom: 60px;
+            }
+        }
+
+		LI {
+			list-style: none;
+			margin-bottom: 5px;
+			display: flex;
+			A {
+				&:hover {
+					color: pink;
+					text-decoration: underline;
+				}
+				font-family: Lato;
+				@include rem-calc(14px);
+				&.inverted {
+					color: #00a3ad;
+					&:hover {
+						color: pink;
+					}
+				}
+			}
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+	}
+	.accordion {
+		display: flex;
+		flex-direction: column;
+	}
+	.ux-simple-accordion,
+	.accordion-item {
+		background: #000;
+		border-color: #222;
+		position: relative;
+		overflow: hidden;
+		transition: max-height .3s ease-out;
+		max-height : rem-calc(39px);
+		.ux-icon {
+			transform: inherit;
+			.icon-arrow-up {
+				&.icon {
+					transition: .3s transform ease-out;
+					transform: rotate(-180deg);
+					color: #fff;
+					position: relative;
+					top: rem-calc(2px);
+					&:after, &:before {
+						@include rem-calc(16px);
+					}
+				}
+			}
+		}
+		&.social {
+			max-height: inherit; // IE fix
+			max-height: initial;
+			height: auto;
+			cursor: auto;
+			padding: 0;
+			@media (max-width: 991px) {
+				padding: rem-calc(24px 0 0 0);
+			}
+		}
+		&.open {
+			max-height: inherit; // IE fix
+			max-height: rem-calc(250px);
+			height: auto;
+			.icon-plus {
+				transition: transform .3s ease-out;
+				transform: rotate(45deg);
+			}
+		}
+		H5 {
+			position: relative;
+			z-index: 1;
+			color: #fff;
+			font-family: Lato;
+			@include rem-calc(14px);
+			line-height: rem-calc(38px);
+			padding-bottom: 0;
+			cursor: pointer;
+		}
+	}
+	.ux-simple-accordion {
+		padding: 0;
+		margin: 0;
+		&.open {
+			padding-bottom: rem-calc(24px);
+			.ux-icon {
+				.icon {
+					transition: .3s transform ease-out;
+					transform: rotate(0deg);
+				}
+			}
+			.content {
+				display: inline-block;
+			}
+		}
+		@media (max-width: 768px) {
+			padding: 0;
+			margin: 0;
+		}
+		.ux-icon {
+			display: block;
+			top: 0;
+			@media (max-width: 768px) {
+				display: none;
+			}
+		}
+	}
+	.copyright {
+		display: block;
+	}
+	SMALL {
+		display: block;
+		color: #888;
+		margin: 0;
+		font-size: rem-calc(14px);
+		line-height: rem-calc(18px);
+		text-align: right;
+		@media (max-width: 991px) {
+			text-align: left;
+			margin-top: rem-calc(12px);
+		}
+		@media (max-width: 768px) {
+			font-size: rem-calc(12px);
+			line-height: rem-calc(14px);
+		}
+	}
+	UL.inline-list {
+		LI {
+			margin: rem-calc(0 20px 0 0);
+			padding: 0;
+			&:first-child {
+				padding-left: 0;
+			}
+			&:last-child {
+				border-right: 0;
+				margin-left: 0;
+			}
+			A {
+				margin-left: 0;
+				font-family: Lato;
+				@include rem-calc(14px);
+				@media (max-width: 768px) {
+					font-size: rem-calc(12px);
+					line-height: rem-calc(14px);
+				}
+				&:hover {
+					color: pink;
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+	.v-small {
+		margin-bottom: rem-calc(12px);
+		margin-top: rem-calc(12px);
+	}
+	@media (max-width: 768px) {
+		.accordion {
+			flex-direction: row;
+			justify-content: space-between;
+			&:before,
+			&:after {
+				content: none;
+			}
+		}
+		.ux-simple-accordion,
+		.accordion-item {
+			border: none;
+			max-height: inherit; // IE fix
+			max-height: initial;
+			H5 {
+				&:hover {
+					cursor: default;
+				}
+			}
+			.content {
+				display: block;
+			}
+		}
+		.expandable-sections {
+			display: flex;
+			justify-content: flex-start;
+			.ux-simple-accordion,
+			.accordion-item,
+			.accessibility {
+				padding-right: rem-calc(30px);
+			}
+			.icon-plus {
+				display: none;
+			}
+		}
+		SMALL {
+			padding: 0;
+		}
+		LI A {
+			margin-left: 0;
+		}
+		.link-section-short {
+			padding-top: 0;
+		}
+	}
+}
+.footer-text {
+    text-align: right;
+    margin-top: 40px;
+    display: inline-block;
+    color: #acafb2;
+    width: 100%;
+}
