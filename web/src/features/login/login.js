@@ -16,7 +16,6 @@ class Login extends Component {
 	render() {
 		return (
 			<div>
-				Hi
 				<LoginForm submit={this.submit} />
 			</div>
 		);

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Donut from "./components/donut";
+import UsageBreakdownList from "./components/usage-breakdown-list";
 
 class Dashboard extends Component {
 
@@ -8,6 +9,7 @@ class Dashboard extends Component {
 		return (
 			<div>
 				<Donut />
+				<UsageBreakdownList />
 			</div>
 		);
 	}
