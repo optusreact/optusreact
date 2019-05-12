@@ -34,7 +34,7 @@ module.exports = {
                 // exclude: /node_modules/,
                   include: [ 
                                      
-                    path.resolve(__dirname, modulesPath, 'common'),
+                    path.resolve(__dirname, modulesPath, 'optus-core'),
                   ],
                 loaders: ['babel-loader'],
             },
