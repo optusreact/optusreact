@@ -18,7 +18,7 @@ class App extends Component {
   render(){
     return(
       <div>
-        <DonutChart value={this.state.donutval} />
+        <DonutChart value={this.props.donutval} />
       </div>
     )
   }
