@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import LoginForm from "./components/login-form";
 import { connect } from 'react-redux';
-import * as login_actions from 'common/login/actions';
+import * as login_actions from 'optus-core/login/actions';
 import { bindActionCreators } from 'redux';
 
 class Login extends Component {

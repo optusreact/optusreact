@@ -18,11 +18,7 @@ class App extends Component {
   render(){
     return(
       <div>
-      	<Paper className="paper" elevation={1}>
-        	<DonutChart value={this.state.donutval} />
-       </Paper>
-        <br/>
-       
+        <DonutChart value={this.state.donutval} />
       </div>
     )
   }
@@ -59,15 +55,24 @@ static defaultProps = {
     const rotateval = 'rotate(-90 '+halfsize+','+halfsize+')';
 
     return (
-      <svg width={this.props.size} height={this.props.size} className="donutchart">
-        <circle r={radius} cx={halfsize} cy={halfsize} transform={rotateval} style={trackstyle} className="donutchart-track"/>
-        <circle r={radius} cx={halfsize} cy={halfsize} transform={rotateval} style={indicatorstyle} className="donutchart-indicator"/>
-        <text className="donutchart-text" x={halfsize} y={halfsize} style={{textAnchor:'middle'}} >
-          <tspan className="donutchart-text-val">{this.props.value}</tspan>
-          <tspan className="donutchart-text-percent">%</tspan>
-          <tspan className="donutchart-text-label" x={halfsize} y={halfsize+10}>{this.props.valuelabel}</tspan>
-        </text>
-      </svg>
+      <div>
+        <svg width={this.props.size} height={this.props.size} className="donutchart">
+          <circle r={radius} cx={halfsize} cy={halfsize} transform={rotateval} style={trackstyle} className="donutchart-track"/>
+          <circle r={radius} cx={halfsize} cy={halfsize} transform={rotateval} style={indicatorstyle} className="donutchart-indicator"/>
+          <text className="donutchart-text" x={halfsize} y={halfsize} style={{textAnchor:'middle'}} >
+            <tspan className="donutchart-text-val">{this.props.value}</tspan>
+            <tspan className="donutchart-text-percent">%</tspan>
+            <tspan className="donutchart-text-label" x={halfsize} y={halfsize+10}>{this.props.valuelabel}</tspan>
+          </text>
+        </svg>
+        <button
+          className="btn btn-optus mt-50"
+          color="primary"
+          type="submit"
+        >
+          View Breakdown
+        </button>
+      </div>
     );
   }
 }
