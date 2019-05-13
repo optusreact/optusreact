@@ -8,7 +8,7 @@ module.exports = merge(baseConfig, {
   devServer: {
     inline: true,
     contentBase: 'public',
-    port: '3001',
+    port: process.env.PORT || 3001,
   },
 
 })

@@ -1,0 +1,9 @@
+#!/bin/bash
+cd /home/ec2-user/node-website
+curl -sL https://rpm.nodesource.com/setup_10.x | bash -
+yum install -y nodejs
+npm install forever -g
+cd /home/ec2-user/node-website/optus-core
+npm install
+cd ../web
+npm run preinstall
