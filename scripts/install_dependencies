@@ -7,3 +7,4 @@ cd /home/ec2-user/node-website/optus-core
 npm install
 cd ../web
 npm run preinstall
+npm install
