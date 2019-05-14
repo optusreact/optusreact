@@ -9,15 +9,18 @@ function obfuscateNumber(num) {
 }
 
 export function getAccountDetails() {
-    var cards = [];
+    var cards = [],
+        usages = [];
     for (var i = 0; i < 3; i++) {
         cards.push(getCreditCardNumber());
+        usages.push(i * 18 + 46 );
     }
     return {
         'account': {
             'Name': 'Gian Johansen',
             'Date of Birth': '18/11/1991',
         },
-        'cards': cards
+        'cards': cards,
+        'usages': usages
     }
 }

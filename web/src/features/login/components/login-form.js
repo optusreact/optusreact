@@ -71,6 +71,7 @@ class LoginForm extends Component {
 							className="login-top"
 						/>
 						<TextField
+							type="password"
 							error={error.password ? true : false}
 							id="password"
 							label="Password"

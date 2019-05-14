@@ -10,17 +10,27 @@ import './dashboard.scss';
 
 class Dashboard extends Component {
 	state = {
-		cards: []
+		cards: [],
+		selectedCard: 0,
+		usages: []
 	}
 	componentDidMount() {
 		var account = getAccountDetails();
 		this.setState({
 			'account': account.account,
-			'cards': account.cards
+			'cards': account.cards,
+			'usages': account.usages
 		});
 	}
 
+	onItemClick(index){
+		this.setState({ selectedCard: index });
+	}
+
 	render() {
+		var usage = this.state.usages[this.state.selectedCard],
+			selectedCard = this.state.cards[this.state.selectedCard]
+
 		return (
 			<div className="dashboard">
 				<h1>Welcome, test</h1>
@@ -39,8 +49,8 @@ class Dashboard extends Component {
 								}) : ''}
 								<br></br>
 								<h3>Card details</h3>
-								{this.state.cards ? this.state.cards.map((card) => {
-									return <div className="card-box">
+								{this.state.cards ? this.state.cards.map((card, index) => {
+									return <div className="card-box" data-id="{index}" onClick={this.onItemClick.bind(this, index)}>
 										<p className="expiry">06/06</p>
 										<p className="number">{card}</p>
 										<p className="name">Gian Johansen</p>
@@ -51,8 +61,9 @@ class Dashboard extends Component {
 					</Grid>
 					<Grid item md={6} xs={12} >
 						<div className="section text-center">
-							<h2 className="mb-60">Your usage</h2>
-							<Donut />
+							<h2>Your usage for</h2>
+							<p className="mb-60">{selectedCard}</p>
+							<Donut donutval={usage} />
 							<h2 className="mb-60">Usage Details</h2>
 							<UsageBreakdownList />
 						</div>
