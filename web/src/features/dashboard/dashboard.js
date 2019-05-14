@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Donut from "./components/donut";
+import UsageBreakdownList from "./components/usage-breakdown-list";
 
 import Grid from '@material-ui/core/Grid';
 
@@ -63,6 +64,8 @@ class Dashboard extends Component {
 							<h2>Your usage for</h2>
 							<p className="mb-60">{selectedCard}</p>
 							<Donut donutval={usage} />
+							<h2 className="mb-60">Usage Details</h2>
+							<UsageBreakdownList />
 						</div>
 					</Grid>
 				</Grid>

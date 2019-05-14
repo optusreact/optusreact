@@ -6,9 +6,10 @@ module.exports = merge(baseConfig, {
   devtool: '#eval-source-map',
 
   devServer: {
+    host: '0.0.0.0',
     inline: true,
     contentBase: 'public',
-    port: '3001',
+    port: process.env.PORT || 3001,
   },
 
 })
