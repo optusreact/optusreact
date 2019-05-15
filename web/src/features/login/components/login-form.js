@@ -56,7 +56,7 @@ class LoginForm extends Component {
 		const { error } = this.state;
 		return (
 			<Grid className="login-form" container spacing={16}>
-				<Grid item xs={7}>
+				<Grid item xs={12} md={7}>
 					<form onSubmit={this.onSubmit}>
 						<h1>Login to your account</h1>
 						<p>Please log in using the email address you provided when you signed up.</p>

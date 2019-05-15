@@ -19,6 +19,14 @@ class App extends Component {
     return(
       <div>
         <DonutChart value={this.props.donutval} />
+        <button
+          className="btn btn-optus mt-50"
+          color="primary"
+          type="submit"
+          onClick={this.props.onCheckUsage}
+        >
+          View Breakdown
+        </button>
       </div>
     )
   }
@@ -40,8 +48,7 @@ static defaultProps = {
 		size:200,
 		strokewidth:26
 }
-  
-  
+
   render() {
 
     const halfsize = (this.props.size * 0.5);
@@ -65,13 +72,6 @@ static defaultProps = {
             <tspan className="donutchart-text-label" x={halfsize} y={halfsize+10}>{this.props.valuelabel}</tspan>
           </text>
         </svg>
-        <button
-          className="btn btn-optus mt-50"
-          color="primary"
-          type="submit"
-        >
-          View Breakdown
-        </button>
       </div>
     );
   }
