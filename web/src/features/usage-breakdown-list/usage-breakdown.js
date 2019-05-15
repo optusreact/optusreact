@@ -42,6 +42,7 @@ function UsageBreakDown(props) {
           <Grid item xs={12} sm container>
             <Grid item xs container direction="column" spacing={16}>
               <Grid item xs>
+                <h2 className="mb-60">Usage Details</h2>
                 <Typography gutterBottom variant="subtitle1">
                   {usage.usageName}
                 </Typography>

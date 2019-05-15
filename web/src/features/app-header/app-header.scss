@@ -1,27 +1,3 @@
-.app-header{
-	
-}
-
-
-#wrapper {
-  padding-left: $menu-width;
-  
-}
-
-
-#sidebar-wrapper {
-  z-index: 1000;
-  position: fixed;
-  left: 250px;
-  width: 250px;
-  height: 100%;
-  margin-left: -250px;
-  overflow-y: auto;
-  background: #000;
-
-}
-
-
 .optus-nav {
   background: #111;
   text-align: center;
@@ -32,27 +8,3 @@
   display: block;
   margin: 0 auto;
 }
-
-#page-content-wrapper {
-  width: 100%;
-  padding-left: $menu-width;
-  position: relative;
-}
-
-
-
-/* Sidebar Styles */
-
-
-.sidebar-nav li {
-  text-indent: 20px;
-  line-height: 40px;
-  list-style-type: none;
-}
-
-.sidebar-nav li a {
-  display: block;
-  text-decoration: none;
-  color: #ffff;
-}
-

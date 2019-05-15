@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import Donut from "./components/donut";
-import UsageBreakdownList from "./components/usage-breakdown-list";
-
 import Grid from '@material-ui/core/Grid';
-
 import { getAccountDetails } from 'optus-core/account'
-
 import './dashboard.scss';
 
 class Dashboard extends Component {
@@ -23,6 +19,10 @@ class Dashboard extends Component {
 		});
 	}
 
+	onCheckUsage() {
+		this.props.history.push('/usage-breakdown-list');
+	}
+
 	onItemClick(index){
 		this.setState({ selectedCard: index });
 	}
@@ -33,7 +33,7 @@ class Dashboard extends Component {
 
 		return (
 			<div className="dashboard">
-				<h1>Welcome, test</h1>
+				<h1>Welcome, Gian</h1>
 
 				<Grid container spacing={16}>
 					<Grid item md={6} xs={12} >
@@ -51,7 +51,7 @@ class Dashboard extends Component {
 								<h3>Card details</h3>
 								{this.state.cards ? this.state.cards.map((card, index) => {
 									return <div className="card-box" data-id="{index}" onClick={this.onItemClick.bind(this, index)}>
-										<p className="expiry">06/06</p>
+										<p className="expiry">{index * 2}/06</p>
 										<p className="number">{card}</p>
 										<p className="name">Gian Johansen</p>
 									</div>
@@ -63,9 +63,7 @@ class Dashboard extends Component {
 						<div className="section text-center">
 							<h2>Your usage for</h2>
 							<p className="mb-60">{selectedCard}</p>
-							<Donut donutval={usage} />
-							<h2 className="mb-60">Usage Details</h2>
-							<UsageBreakdownList />
+							<Donut onCheckUsage={this.onCheckUsage.bind(this)} donutval={usage} />
 						</div>
 					</Grid>
 				</Grid>
@@ -74,4 +72,4 @@ class Dashboard extends Component {
 	}
 }
 
-export default Dashboard
+export default Dashboard;
