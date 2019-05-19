@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import _ from 'lodash';
 import './usage-breakdown-list.scss';
 import UsageBreakdown from "./usage-breakdown";
+import UsageDonut from "./usage-donut";
 
 class UsageBreakdownList extends Component {
 	usageBD = [
@@ -48,17 +49,13 @@ class UsageBreakdownList extends Component {
 									
 
 		})
-
-		backToDashboard() {
-			this.props.history.push('/dashboard');
-		}
 		
 		render () {
 			return (
-					<div >
-						<a onClick={this.backToDashboard.bind(this)}>&#60; Back to previous page</a>
+					<div className="usageBreakdown">
+						<a onClick={this.props.backToUsage.bind(this)}>&#60; Back to usage summary</a>
 						<h3 className="text-center">Your usage</h3>
-						{this.usageBDList}
+						<UsageDonut usageBreakdown={this.props.usageBreakdown}/>
 					</div>
 			)
 		}

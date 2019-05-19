@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
-import {  Login, Dashboard, UsageBreakdownList } from "../../features";
+import {  Login, Dashboard } from "../../features";
 import { HeaderApp } from "../../features";
 import { Footer } from "../../features";
 
@@ -12,7 +12,6 @@ export default class Router extends Component {
 					<HeaderApp />
 					<div className="main">
 						<Switch>
-							<Route exact path="/usage-breakdown-list" component={UsageBreakdownList} />
 							<Route exact path="/dashboard" component={Dashboard} />
 							<Route exact path="/" component={Login} />
 							<Redirect from="*" to="/" />

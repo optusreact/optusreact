@@ -1,20 +1,7 @@
 import React, { Component } from "react";
-import Paper from "@material-ui/core/Paper";
-import _ from "lodash";
 import  "./donut.scss";
-import { func, string, number } from "prop-types";
 
 class App extends Component {
-
-  state={
-    
-      donutval:55
-    
-  }
-  updateVal = e => {
-		this.setState({donutval:e.target.value})
-	};
- 
   render(){
     return(
       <div>
@@ -34,23 +21,14 @@ class App extends Component {
 
 class DonutChart extends Component {
 
-
-// static propTypes = {
-// 		value: number,        // value the chart should show
-// 		valuelabel: string,   // label for the chart
-// 		size: number,         // diameter of chart
-// 		strokewidth: number   // width of chart line
-// };
-
-static defaultProps = {
-		value:0,
-		valuelabel:'Remaining',
-		size:200,
-		strokewidth:26
-}
+  static defaultProps = {
+      value:0,
+      valuelabel:'Remaining',
+      size:200,
+      strokewidth:26
+  }
 
   render() {
-
     const halfsize = (this.props.size * 0.5);
     const radius = halfsize - (this.props.strokewidth * 0.5);
     const circumference = 2 * Math.PI * radius;
@@ -76,6 +54,5 @@ static defaultProps = {
     );
   }
 }
-
 
 export default App;

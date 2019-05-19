@@ -1,0 +1,77 @@
+.billing {
+    text-align: left;
+
+    .billingSummary {
+        display: flex;
+        padding-bottom: 24px;
+        border-bottom: 1px solid #ccc;
+
+        >div {
+            flex-grow: 1;
+            font-size: 28px;
+            font-weight: bold;
+            padding: 12px;
+
+            .label {
+                color: #333;
+                font-size: 16px;
+                font-weight: normal;
+                margin-bottom: 12px;
+            }
+        }
+
+        @media only screen and (max-width: 840px) {
+            >div {
+              font-size: 20px;
+            }
+          }
+
+        .amountDue {
+            border-right: 1px solid #ccc;
+        }
+    }
+
+    .recentCharges {
+        margin-top: 48px;
+
+        .title {
+            font-weight: bold;
+            line-height: 2;
+            border-bottom: 2px solid black;
+            margin-bottom: 12px;
+        }
+
+        .bar {
+            width: 24%;
+            float: left;
+            margin: 24px 0.5%;
+
+            .indicator {
+                display: flex;
+                flex-direction: column;
+                height: 320px;
+
+                .spacer {
+                    flex-grow: 1;
+                }
+
+                .value {
+                    font-weight: bold;
+                    font-size: 14px;
+                    text-align: center;
+                }
+
+                .usage {
+                    background-color: #fdcc08;
+                    width: 86%;
+                    margin: 0 7%;
+                }
+            }
+
+            .period {
+                text-align: center;
+                border-top: 2px solid black;
+            }
+        }
+    }
+}

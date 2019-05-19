@@ -1,0 +1,84 @@
+.donut-chart {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 2rem;
+    border-radius: 100%
+}
+
+p.center {
+    background: #fff;
+    position: absolute;
+    text-align: center;
+    font-size: 28px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 160px;
+    height: 160px;
+    margin: auto;
+    border-radius: 50%;
+    line-height: 80px;
+    padding: 0;
+}
+
+
+.portion-block {
+    border-radius: 50%;
+    clip: rect(0px, 200px, 200px, 100px);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.circle {
+    border-radius: 50%;
+    clip: rect(0px, 100px, 200px, 0px);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    font-family: monospace;
+    font-size: 1.5rem;
+}
+
+#part1 .circle, .color1 {
+    background-color: #80276c;
+}
+#part2 .circle, .color2 {
+    background-color: #00a3ad;
+}
+#part3 .circle, .color3{
+    background-color: #d93a1b;
+}
+#part4 .circle, .color4 {
+    background-color: #fdcc08;
+}
+#part5 .circle, .color5 {
+    background-color: #006280;
+}
+#part6 .circle, .color6 {
+    background-color: #ff6e7e;
+}
+
+.labels {
+    >div.label :last-child {
+        border-bottom: 0;
+    }
+
+    .label {
+        display: flex;
+        border-bottom: 2px solid #dedede;
+        padding: 12px;
+    
+        >div:first-child {
+            width: 24px;
+            height: 24px;
+            margin-right: 24px;
+        }
+    
+        .name {
+            flex-grow: 1;
+        }
+    }
+}
