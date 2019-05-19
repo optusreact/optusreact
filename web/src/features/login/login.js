@@ -1,17 +1,19 @@
 import React, { Component } from "react";
 import LoginForm from "./components/login-form";
 import { connect } from 'react-redux';
-import * as login_actions from 'optus-core/login/actions';
 import { bindActionCreators } from 'redux';
+import { login } from 'optus-core/actions'
 
 class Login extends Component {
-
 	submit = (data) => {
-		
-		console.log('on Submit called parent', JSON.stringify(data));
-		this.props.actions.login(data).then(() => this.props.history.push("/dashboard"));
-		
+		this.props.login(data.email, data.password);
 	};
+
+	componentWillReceiveProps(props) {
+		if (props.authenticated) {
+			this.props.history.push("/dashboard");
+		}
+	}
 
 	render() {
 		return (
@@ -22,11 +24,19 @@ class Login extends Component {
 	}
 }
 
+const mapStateToProps = (state) => {
+    let authenticated = state.account.authenticated;
+    let error = state.account.error;
+    return {
+		'authenticated': authenticated,
+		'error': error
+    }
+}
 
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        login
+    }, dispatch);
+}
 
-const loginContainer = connect(
-	null,
-	dispatch => ({actions:bindActionCreators(login_actions, dispatch)})
-	)(Login)
-
-export default loginContainer
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

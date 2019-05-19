@@ -7,9 +7,10 @@ module.exports = merge(baseConfig, {
 
   devServer: {
     host: '0.0.0.0',
+    historyApiFallback: true,
     inline: true,
     contentBase: 'public',
     port: process.env.PORT || 3001,
-  },
+  }
 
 })
