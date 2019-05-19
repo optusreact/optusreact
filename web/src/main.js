@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import configureStore from './app/store/store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import doctorsApp from 'optus-core/reducers'
 import Router from './app/route/route';
 
-const store = configureStore( window.REDUX_INITIAL_DATA);
+let store = createStore(doctorsApp);
 
 ReactDOM.render(
 	<Provider store = {store}>

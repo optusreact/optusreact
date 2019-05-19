@@ -3,8 +3,10 @@ import Billing from "./components/billing";
 import Donut from "./components/donut";
 import UsageBreakdownList from "./components/usage-breakdown-list";
 import Grid from '@material-ui/core/Grid';
-import { getAccountDetails } from 'optus-core/account'
 import './dashboard.scss';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { login } from 'optus-core/actions'
 
 class Dashboard extends Component {
 	constructor(props) {
@@ -22,15 +24,6 @@ class Dashboard extends Component {
 
 	backToUsage() {
 		this.setState({ viewBreakdown: false});
-	}
-
-	componentDidMount() {
-		var account = getAccountDetails();
-		this.setState({
-			'account': account.account,
-			'cards': account.cards,
-			'usages': account.usages,
-		});
 	}
 
 	onCheckUsage() {
@@ -98,10 +91,15 @@ class Dashboard extends Component {
 			percentage: 27.2
 		}
 	]
+	componentDidMount() {
+		if (!this.props.account) {
+			this.props.history.push("/");
+		}
+	}
 
 	render() {
-		var usage = this.state.usages[this.state.selectedCard],
-			selectedCard = this.state.cards[this.state.selectedCard]
+		var usage = this.props.usages ? this.props.usages[this.state.selectedCard] : null,
+			selectedCard = this.props.cards ? this.props.cards[this.state.selectedCard] : 0
 
 		return (
 			<div className="dashboard">
@@ -112,16 +110,16 @@ class Dashboard extends Component {
 						<div className="section">
 							<h2>Account details</h2>
 							<div className="account-details">
-								{this.state.account ? Object.keys(this.state.account).map((key, index) => {
-								return <div key={index} className="account-values">
+								{this.props.account ? Object.keys(this.props.account).map((key, index) => {
+								return <div className="account-values">
 									<p className="key pull-left"><strong>{key}</strong></p>
-									<p className="value pull-right">{this.state.account[key]}</p>
+									<p className="value pull-right">{this.props.account[key]}</p>
 									<div className="clearfix"></div>
 								</div>
 								}) : ''}
 								<br></br>
 								<h3>Card details</h3>
-								{this.state.cards ? this.state.cards.map((card, index) => {
+								{this.props.cards ? this.props.cards.map((card, index) => {
 									return <div className="card-box" key={index} data-id="{index}" onClick={this.onItemClick.bind(this, index)}>
 										<p className="icon"><i className="material-icons">perm_device_information</i></p>
 										<p className="name">Gian Johansen</p>
@@ -158,5 +156,25 @@ class Dashboard extends Component {
 		);
 	}
 }
+const mapStateToProps = (state) => {
+    let authenticated = state.account.authenticated;
+	let account = state.account.account.account;
+	let cards = state.account.account.cards;
+	let usage = state.account.account.usage;
+	console.log(state);
+    return {
+		'authenticated': authenticated,
+		'account': account,
+		'cards': cards,
+		'usage': usage
+    }
+}
 
-export default Dashboard;
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        login
+    }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+
