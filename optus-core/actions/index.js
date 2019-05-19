@@ -5,3 +5,9 @@ export const login = (username, password) => {
         password: password
     }
 }
+
+export const getUser = () => {
+    return {
+        type: 'GET_USER'
+    }
+}

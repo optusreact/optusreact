@@ -15,6 +15,7 @@ function obfuscateNumber(num) {
 function performAuth() {
     return true;
 }
+
 function getAccountData() {
     var cards = [],
         usages = [];
@@ -28,7 +29,33 @@ function getAccountData() {
             'Date of Birth': '18/11/1991',
         },
         'cards': cards,
-        'usages': usages
+        'usage': usages,
+        'billing': {
+            'total': 23.6,
+            'due': '20 May',
+            'recent': [
+                {
+                    period: "11 Jan - 10 Feb",
+                    value: 34.18,
+                    percentage: 58.70
+                },
+                {
+                    period: "11 Feb - 10 Mar",
+                    value: 23.09,
+                    percentage: 39.65
+                },
+                {
+                    period: "11 Mar - 10 Apr",
+                    value: 58.23,
+                    percentage: 100
+                },
+                {
+                    period: "11 Apr -10 May",
+                    value: 23.60,
+                    percentage: 40.53
+                }
+            ]
+        }
     }
 }
 
@@ -57,6 +84,17 @@ const login = (state = { authenticated: false, error: null, account: {} }, actio
                 });
             }
 
+        case 'GET_USER':
+            console.log(['REDUX:GET_USER', action, state]);
+
+            /* get user details */
+            var account = getAccountData();
+
+            return Object.assign({}, state, {
+                authenticated: true,
+                account: account,
+                error: null
+            });
         default:
             return state
     }

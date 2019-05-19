@@ -38,33 +38,6 @@ class Dashboard extends Component {
 		this.setState({ activeTab: index });
 	}
 
-	billing = {
-		amountDue: 23.60,
-		dueDate: '20 May 2019',
-		recentCharges: [
-			{
-				period: "11 Jan - 10 Feb",
-				value: 34.18,
-				percentage: 58.70
-			},
-			{
-				period: "11 Feb - 10 Mar",
-				value: 23.09,
-				percentage: 39.65
-			},
-			{
-				period: "11 Mar - 10 Apr",
-				value: 58.23,
-				percentage: 100
-			},
-			{
-				period: "11 Apr -10 May",
-				value: 23.60,
-				percentage: 40.53
-			}
-		]
-	}
-
 	usageBreakdown = [
 		{
 			name: 'Browsing',
@@ -98,7 +71,7 @@ class Dashboard extends Component {
 	}
 
 	render() {
-		var usage = this.props.usages ? this.props.usages[this.state.selectedCard] : null,
+		var usage = this.props.usage ? this.props.usage[this.state.selectedCard] : null,
 			selectedCard = this.props.cards ? this.props.cards[this.state.selectedCard] : 0
 
 		return (
@@ -106,7 +79,7 @@ class Dashboard extends Component {
 				<h1>Welcome, Gian</h1>
 
 				<Grid container spacing={16}>
-					<Grid item md={7} xs={12} >
+					<Grid item md={6} xs={12} >
 						<div className="section">
 							<h2>Account details</h2>
 							<div className="account-details">
@@ -128,7 +101,9 @@ class Dashboard extends Component {
 								}) : ''}
 							</div>
 						</div>
+					</Grid>
 
+					<Grid item md={6} xs={12} >
 						<div className="tabs">
 							<div onClick={this.onTabClick.bind(this, 1)} className={this.state.activeTab === 1 ?  'active' : ''}>Usage</div>
 							<div onClick={this.onTabClick.bind(this, 2)} className={this.state.activeTab === 2 ?  'active' : ''}>Billing</div>
@@ -147,7 +122,7 @@ class Dashboard extends Component {
 								</div>
 							</div>
 							<div className={this.state.activeTab === 2 ?  'active' : ''}>
-								<Billing amountDue={this.billing.amountDue} dueDate={this.billing.dueDate} recentCharges={this.billing.recentCharges}/>
+								{this.props.billing ? <Billing amountDue={this.props.billing.total} dueDate={this.props.billing.due} recentCharges={this.props.billing.recent}/> : ''}
 							</div>
 						</div>
 					</Grid>
@@ -161,12 +136,13 @@ const mapStateToProps = (state) => {
 	let account = state.account.account.account;
 	let cards = state.account.account.cards;
 	let usage = state.account.account.usage;
-	console.log(state);
+	let billing = state.account.account.billing;
     return {
 		'authenticated': authenticated,
 		'account': account,
 		'cards': cards,
-		'usage': usage
+		'usage': usage,
+		'billing': billing
     }
 }
 

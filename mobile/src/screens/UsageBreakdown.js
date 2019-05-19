@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Alert, Text, Image, StyleSheet, View, KeyboardAvoidingView, StatusBar } from "react-native";
+import { Alert, Text, Image, StyleSheet, View, KeyboardAvoidingView } from "react-native";
 import Button from "../components/Button";
 import FingerprintPopup from './FingerprintPopup';
 
@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { login } from 'optus-core/actions'
 
-class LoginScreen extends React.Component {
+class UsageBreakdown extends React.Component {
   state = {
     popupShowed: null,
     _systemEmail: 'email',
@@ -55,64 +55,27 @@ class LoginScreen extends React.Component {
     const {navigate} = this.props.navigation;
     return (
         <View style={styles.container}>
+            <Text style={styles.heading}>Usage breakdown</Text>
             <Image
-              style={{width: 80, height: 50, marginBottom: 40}}
-              source={require('../assets/logo-yes.png')}
+              style={{width: 380, height: 500, marginBottom: 40}}
+              source={require('../assets/usage-breakdown.png')}
             />
-            <View style={styles.form}>
-              <Button label="Login using Touch ID" onPress={this.handleFingerprintShowed} />
-            </View>
-            {this.state.popupShowed && (
-              <FingerprintPopup
-                style={styles.popup}
-                handleAuthSuccessful={this.handleAuthSuccessful}
-                handlePopupDismissed={this.handleFingerprintDismissed}
-              />
-            )}
         </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#333547',
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  whiteText: {
-      color: "#eee",
-      opacity: 0.8,
-      fontSize: 22
-  },
-  hr: {
-    height: 2,
-    backgroundColor: "transparent",
-    width: "80%",
-    marginTop: 60,
-    marginBottom: 60
-  },
-  logo: {
-    width: "100%",
-    resizeMode: "contain",
-    alignSelf: "center"
-  },
-  form: {
-    justifyContent: "center",
-    alignItems: "center",
-    width: "80%"
-  },
-  logoImage: {
-      width: "20%",
-      height: 100,
-      marginBottom: 80
-  },
-  fingerprintImage: {
-      width: "60%",
-      height: 100,
-      marginBottom: 60
-  }
+    heading: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        marginBottom: 20
+    },
+    container: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
+    }
 });
 
 const mapStateToProps = (state) => {
@@ -130,4 +93,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(UsageBreakdown);
