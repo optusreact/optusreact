@@ -104,11 +104,11 @@ class Dashboard extends Component {
 					</Grid>
 
 					<Grid item md={6} xs={12} >
-						<div className="tabs">
+						{this.props.billing && this.props.usage ? <div className="tabs">
 							<div onClick={this.onTabClick.bind(this, 1)} className={this.state.activeTab === 1 ?  'active' : ''}>Usage</div>
 							<div onClick={this.onTabClick.bind(this, 2)} className={this.state.activeTab === 2 ?  'active' : ''}>Billing</div>
 							<div className="tab empty"></div>
-						</div>
+						</div> : ''}
 
 						<div className="tabsContent">
 							<div className={this.state.activeTab === 1 ?  'active' : ''}>
