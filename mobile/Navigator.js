@@ -23,7 +23,7 @@ const AppNavigator = createStackNavigator({
     }},
     Dashboard: {screen: Dashboard,
       navigationOptions: {
-        title: 'Dashboard',
+        title: 'My Account',
         headerStyle: {
           backgroundColor: '#333547',
         },

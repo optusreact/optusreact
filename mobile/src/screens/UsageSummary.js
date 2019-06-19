@@ -12,7 +12,7 @@ import { ScrollView } from "react-native-gesture-handler";
 
 import PieChart from 'react-native-pie-chart';
 
-class UsageBreakdown extends React.Component {
+class UsageSummary extends React.Component {
   state = {
     popupShowed: null,
     _systemEmail: 'email',
@@ -89,7 +89,7 @@ class UsageBreakdown extends React.Component {
  
     return (
         <View style={styles.container}>
-          <Text style={styles.heading}>Usage breakdown</Text>
+          <Text style={styles.heading}>Usage Summary</Text>
           <ScrollView>
             <View style={styles.centerPie}>
               <PieChart
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
       width: "100%",
       justifyContent: "center",
       alignItems: "center",
-      marginBottom: 10,
+      marginBottom: 40,
       marginTop: 10
     },
     container: {
@@ -209,4 +209,4 @@ const mapDispatchToProps = (dispatch) => {
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsageBreakdown);
+export default connect(mapStateToProps, mapDispatchToProps)(UsageSummary);
